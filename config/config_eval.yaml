@@ -1,0 +1,9 @@
+model: "weights/depth_anything_v2_vits_dynamic_fp16.onnx"
+eval:
+  test_dir: "data/nyu2_test"
+  input_res: reduced # change to `reduced` to infer 224x224 images during eval
+  input_height: 480
+  input_width: 640
+  min_depth: 1e-3
+  max_depth: 1
+  batch_size: 1 # ONNX model only supports batch size of 1
