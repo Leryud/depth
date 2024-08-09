@@ -100,4 +100,4 @@ Everything should run the same. Using the FP16 weights should improve latency if
 ## Model Optimization
 
 The project supports both FP32 and FP16 ONNX models. FP16 models can potentially offer improved performance, especially on devices with hardware acceleration for half-precision operations. However, performance vary depending on the specific hardware.
-I have found that it does not improve inference speed on my M1 chip, but seems to consume less RAM and CPU.
+I have found that it does not improve inference speed on my M1 chip.
