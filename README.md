@@ -10,7 +10,7 @@ The model used in this project is evaluated on the NYU Depth V2 dataset
 ```bash
 src/
 ├── config # YAML configuration files
-├── data
+├── data # Test data
 │   └── nyu2_test # Dataset used for evaluation
 ├── src
 │   ├── applications # Inference files
@@ -38,7 +38,12 @@ src/
 
 ## Installation
 
-
+This project is developped with Poetry as a environment manager. To install , run:
+```bash
+git clone git@github.com:Leryud/depth.git
+cd depth
+poetry install
+```
 
 ## Usage
 
@@ -96,7 +101,3 @@ Everything should run the same. Using the FP16 weights should improve latency if
 
 The project supports both FP32 and FP16 ONNX models. FP16 models can potentially offer improved performance, especially on devices with hardware acceleration for half-precision operations. However, performance vary depending on the specific hardware.
 I have found that it does not improve inference speed on my M1 chip, but seems to consume less RAM and CPU.
-
-## Known Issues
-
-## Future Improvements
