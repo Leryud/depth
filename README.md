@@ -38,7 +38,12 @@ src/
 
 ## Installation
 
-
+This project is developped with Poetry as a environment manager. To install , run:
+```bash
+git clone git@github.com:Leryud/depth.git
+cd depth
+poetry install
+```
 
 ## Usage
 
@@ -46,16 +51,16 @@ The application provides a command-line interface (CLI) for easy use. Here are s
 
 ```bash
 # Run webcam inference
-python main.py --mode cam
+poetry run python -m src.main --mode cam
 
 # Run evaluation
-python main.py --mode evaluate --metrics-output ./evaluation_results
+poetry run python -m src.main --mode evaluate --metrics-output ./evaluation_results
 
-# Run webcam inference with profiling and plot
-python main.py --mode cam --profile --plot-profile
+# Run video inference with profiling and plot
+poetry run python -m src.main --mode fmv --input data/example_vid.mp4 --profile --plot-profile
 
 # Run evaluation with a custom config file and custom profiling output
-python main.py --mode evaluate --config custom_config.yaml --metrics-output ./evaluation_results --profile --profile-output custom_profile.json
+poetry run python -m src.main --mode evaluate --config custom_config.yaml --metrics-output ./evaluation_results --profile --profile-output custom_profile.json
 ```
 
 ### Command-line Arguments
@@ -75,7 +80,7 @@ Here is the link to the test dataset I used: [NYU Depth 2 test split](https://ww
 Simply place it into the `data` folder, and run the evaluation like so :
 
 ```bash
-python main.py --mode evaluate --metrics-output evaluation_results.json
+poetry run python -m src.main --mode evaluate --metrics-output evaluation_results.json
 ```
 
 This will generate a JSON file with evaluation metrics in the specified output file.
@@ -84,11 +89,15 @@ This will generate a JSON file with evaluation metrics in the specified output f
 
 The application includes a built-in profiler for performance analysis. To enable profiling, use the `--profile` flag. The results can be visualized using the `--plot-profile` flag.
 
+### Conversion to FP16
+
+To convert the FP16 weights from the original ONNX model, run :
+```bash
+poetry run python -m src.optim.convert_fp16
+```
+Everything should run the same. Using the FP16 weights should improve latency if used with a compatible and optimised hardware platform.
+
 ## Model Optimization
 
 The project supports both FP32 and FP16 ONNX models. FP16 models can potentially offer improved performance, especially on devices with hardware acceleration for half-precision operations. However, performance vary depending on the specific hardware.
 I have found that it does not improve inference speed on my M1 chip, but seems to consume less RAM and CPU.
-
-## Known Issues
-
-## Future Improvements
