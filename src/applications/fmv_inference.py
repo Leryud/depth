@@ -29,7 +29,6 @@ def fmv_inference(config: dict, filepath: str):
 
         orig_shape = frame.shape[:2]
         depth_map = process_frame(session, frame)
-        # depth_map = np.asarray(depth_map, dtype=np.float32) # For fp16 inference
         depth_color = colorize_resize_depth_map(depth_map, orig_shape)
 
         frame_time_output = time.time()

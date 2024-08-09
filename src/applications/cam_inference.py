@@ -32,7 +32,6 @@ def webcam_inference(config: dict):
 
         frame_count += 1
         depth = process_frame(session, frame)
-        # depth_map = np.asarray(depth_map, dtype=np.float32) # For fp16 inference
 
         orig_shape = frame.shape[:2]
         depth_color = colorize_resize_depth_map(depth, orig_shape)

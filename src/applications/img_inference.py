@@ -27,7 +27,6 @@ def img_inference(config: dict, filepath: str):
         return
 
     depth_map = process_frame(session, frame)
-    # depth_map = np.asarray(depth_map, dtype=np.float32) # For fp16 inference
     depth_color = colorize_resize_depth_map(depth_map, orig_shape)
 
     # Visualize results

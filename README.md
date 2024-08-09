@@ -46,16 +46,16 @@ The application provides a command-line interface (CLI) for easy use. Here are s
 
 ```bash
 # Run webcam inference
-python main.py --mode cam
+poetry run python -m src.main --mode cam
 
 # Run evaluation
-python main.py --mode evaluate --metrics-output ./evaluation_results
+poetry run python -m src.main --mode evaluate --metrics-output ./evaluation_results
 
-# Run webcam inference with profiling and plot
-python main.py --mode cam --profile --plot-profile
+# Run video inference with profiling and plot
+poetry run python -m src.main --mode fmv --input data/example_vid.mp4 --profile --plot-profile
 
 # Run evaluation with a custom config file and custom profiling output
-python main.py --mode evaluate --config custom_config.yaml --metrics-output ./evaluation_results --profile --profile-output custom_profile.json
+poetry run python -m src.main --mode evaluate --config custom_config.yaml --metrics-output ./evaluation_results --profile --profile-output custom_profile.json
 ```
 
 ### Command-line Arguments
@@ -75,7 +75,7 @@ Here is the link to the test dataset I used: [NYU Depth 2 test split](https://ww
 Simply place it into the `data` folder, and run the evaluation like so :
 
 ```bash
-python main.py --mode evaluate --metrics-output evaluation_results.json
+poetry run python -m src.main --mode evaluate --metrics-output evaluation_results.json
 ```
 
 This will generate a JSON file with evaluation metrics in the specified output file.
@@ -83,6 +83,14 @@ This will generate a JSON file with evaluation metrics in the specified output f
 ## Profiling
 
 The application includes a built-in profiler for performance analysis. To enable profiling, use the `--profile` flag. The results can be visualized using the `--plot-profile` flag.
+
+### Conversion to FP16
+
+To convert the FP16 weights from the original ONNX model, run :
+```bash
+poetry run python -m src.optim.convert_fp16
+```
+Everything should run the same. Using the FP16 weights should improve latency if used with a compatible and optimised hardware platform.
 
 ## Model Optimization
 

@@ -1,1 +1,1 @@
-model: "weights/depth_anything_v2_vits_dynamic.onnx"
+model: "weights/depth_anything_v2_vits_dynamic_fp16.onnx"

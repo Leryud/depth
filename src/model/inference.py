@@ -36,4 +36,4 @@ def process_frame(
 
     depth = binding.get_outputs()[0].numpy()
 
-    return depth
+    return depth.astype(np.float32)

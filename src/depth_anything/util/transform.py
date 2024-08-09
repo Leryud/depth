@@ -231,8 +231,8 @@ class PrepareForNet(object):
     def __call__(self, sample):
         image = np.transpose(sample["image"], (2, 0, 1))
         sample["image"] = np.ascontiguousarray(image).astype(
-            np.float32
-        )  # For fp16 inference : np.float16
+            np.float16
+        )
 
         if "mask" in sample:
             sample["mask"] = sample["mask"].astype(np.float32)
@@ -240,8 +240,8 @@ class PrepareForNet(object):
 
         if "depth" in sample:
             depth = sample["depth"].astype(
-                np.float32
-            )  # For fp16 inference : np.float16
+                np.float16
+            )
             sample["depth"] = np.ascontiguousarray(depth)
 
         if "semseg_mask" in sample:
