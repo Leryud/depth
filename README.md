@@ -10,7 +10,7 @@ The model used in this project is evaluated on the NYU Depth V2 dataset
 ```bash
 src/
 ├── config # YAML configuration files
-├── data # Test data
+├── data
 │   └── nyu2_test # Dataset used for evaluation
 ├── src
 │   ├── applications # Inference files
@@ -54,13 +54,13 @@ The application provides a command-line interface (CLI) for easy use. Here are s
 poetry run python -m src.main --mode cam
 
 # Run evaluation
-poetry run python -m src.main --mode evaluate --metrics-output ./evaluation_results
+poetry run python -m src.main --mode evaluate --eval-output evaluation_results.json
 
 # Run video inference with profiling and plot
 poetry run python -m src.main --mode fmv --input data/example_vid.mp4 --profile --plot-profile
 
 # Run evaluation with a custom config file and custom profiling output
-poetry run python -m src.main --mode evaluate --config custom_config.yaml --metrics-output ./evaluation_results --profile --profile-output custom_profile.json
+poetry run python -m src.main --mode evaluate --config custom_config.yaml --eval-output evaluation_results.json --profile --profile-output profile.json
 ```
 
 ### Command-line Arguments
@@ -100,4 +100,4 @@ Everything should run the same. Using the FP16 weights should improve latency if
 ## Model Optimization
 
 The project supports both FP32 and FP16 ONNX models. FP16 models can potentially offer improved performance, especially on devices with hardware acceleration for half-precision operations. However, performance vary depending on the specific hardware.
-I have found that it does not improve inference speed on my M1 chip.
+I have found that it does not improve inference speed on my M1 chip, but seems to consume less RAM and CPU.
