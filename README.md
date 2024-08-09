@@ -54,13 +54,13 @@ The application provides a command-line interface (CLI) for easy use. Here are s
 poetry run python -m src.main --mode cam
 
 # Run evaluation
-poetry run python -m src.main --mode evaluate --metrics-output ./evaluation_results
+poetry run python -m src.main --mode evaluate --eval-output evaluation_results.json
 
 # Run video inference with profiling and plot
 poetry run python -m src.main --mode fmv --input data/example_vid.mp4 --profile --plot-profile
 
 # Run evaluation with a custom config file and custom profiling output
-poetry run python -m src.main --mode evaluate --config custom_config.yaml --metrics-output ./evaluation_results --profile --profile-output custom_profile.json
+poetry run python -m src.main --mode evaluate --config custom_config.yaml --eval-output evaluation_results.json --profile --profile-output profile.json
 ```
 
 ### Command-line Arguments
