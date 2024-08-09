@@ -18,8 +18,8 @@ def load_model(model_path: str) -> ort.InferenceSession:
     return ort.InferenceSession(
         model_path,
         providers=[
-            "CUDAExecutionProvider",
+            # "CUDAExecutionProvider",
             "CPUExecutionProvider",
-            "CoreMLExecutionProvider",
+            # "CoreMLExecutionProvider",
         ],
     )

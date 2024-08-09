@@ -1,1 +1,2 @@
+# Using 'dynamic' model allows dynamic input size -> faster -> quality loss
 model: "weights/depth_anything_v2_vits_dynamic.onnx"
